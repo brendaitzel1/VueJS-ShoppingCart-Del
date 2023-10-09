@@ -1,5 +1,11 @@
 <script setup>
 import { ref } from 'vue';
+// metodo para guardar nuevo articulo en la lista
+const saveItem = () => {
+  items.value.push({id: items.value.length + 1, label: newItem.value})
+  // limpiando el contenido de newItem
+  newItem.value = "";
+};
 const header = ref('App Lista de compras');
 const items = ref([
   {id: 1, label: '10 bolillos 🥖'},
@@ -12,7 +18,7 @@ const newItemHighPriority = ref(false);
 
 <template>
   <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
-  <form v-on:submit.prevent="items.push({id: items.length + 1, label: newItem})" class="add-items form">
+  <form v-on:submit.prevent="saveItem" class="add-items form">
 
    <!-- Input de Nuevo Articulo -->
    <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
