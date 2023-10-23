@@ -29,6 +29,10 @@ const doEdit = (edit) =>{
     <button v-if="!editing" @click="doEdit(true)" class="btn btn-primary">Agregar Articulo</button>
     <button v-else @click="doEdit(false)" class="btn">Cancelar</button>
   </div>
+<!-- 
+  <a :href="newItem"> 
+    <i class="material-icons shopping-cart-icon">link</i>
+  </a> -->
 
   <form v-if="editing" v-on:submit.prevent="saveItem" class="add-items form">
 
@@ -49,11 +53,11 @@ const doEdit = (edit) =>{
 
   <ul>
     <li v-for="{ id, label } in items" v-bind:key="id">
-      🔹 {{ label }}
+      ⭐ {{ label }}
     </li>
   </ul>
   <p v-if="items.length == 0">🥀 Lista de compras vacía🥀</p>
-  <p v-else> 🔥 Ingrese más Items 🔥 </p>
+  <!-- <p v-else> 🔥 Ingrese más Items 🔥 </p> -->
 </template>
 
 <style scoped>
