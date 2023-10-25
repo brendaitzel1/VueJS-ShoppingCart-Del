@@ -8,10 +8,17 @@ const saveItem = () => {
 };
 const header = ref('App Lista de compras');
 const items = ref([
-  {id: 1, label: '10 bolillos 🥖', purchased: true},
-  {id: 2, label: '1 lata de frijoles🫘', purchased: false},
-  {id: 3, label: '2 lata de atún 🐟', purchased: true}
+  {id: 1, label: '10 bolillos 🥖', purchased: true, highPriority: true},
+  {id: 2, label: '1 lata de frijoles🫘', purchased: false, highPriority: true},
+  {id: 3, label: '2 lata de atún 🐟', purchased: true, highPriority: false}
 ]);
+// funcion que alterna el estado de comprado de un item
+const togglePurchased =(item) =>{
+//Invertir la propoedad Purchased
+item.purchased = !item.purchased;
+}
+
+
 const newItem = ref('');
 const newItemHighPriority = ref(false);
 const editing = ref(false);
@@ -54,10 +61,11 @@ const doEdit = (edit) =>{
 
   <ul>
     <li
-     v-for="{ id, label, purchased } in items" v-bind:key="id"
-     :class="{strikeout : purchased}"
+     v-for="({ id, label, purchased, highPriority}, index) in items" v-bind:key="id"
+     :class="{strikeout : purchased, priority:highPriority}"
+     @click="togglePurchased(items[index])" 
      >
-      ⭐ {{ label }}
+      ⭐{{ label }}
     </li>
   </ul>
   <p v-if="items.length == 0">🥀 Lista de compras vacía🥀</p>
