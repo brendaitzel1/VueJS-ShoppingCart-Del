@@ -21,11 +21,6 @@ const doEdit = (edit) =>{
   //  limpio el input del texto
   newItem.value ="";
 };
-
-// OPPCION BOTON 
-
-
-
 </script>
 
 <template>
