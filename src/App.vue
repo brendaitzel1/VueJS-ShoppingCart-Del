@@ -21,6 +21,7 @@ const doEdit = (edit) =>{
   //  limpio el input del texto
   newItem.value ="";
 };
+
 </script>
 
 <template>
@@ -37,7 +38,7 @@ const doEdit = (edit) =>{
   <form v-if="editing" v-on:submit.prevent="saveItem" class="add-items form">
 
    <!-- Input de Nuevo Articulo -->
-   <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
+   <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo" required>
   
     <!--check boxes -->
     <label>
@@ -48,7 +49,10 @@ const doEdit = (edit) =>{
     {{ newItemHighPriority ? "🔥" : "🧊" }}
   
      <!--BOTTON DE UI -->
-     <button class="btn btn-primary">Salvar Articulo </button>
+     <button  class="btn btn-primary" >Salvar Articulo </button>
+    
+
+     
   </form>
 
   <ul>
