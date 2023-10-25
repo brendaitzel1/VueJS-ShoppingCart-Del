@@ -22,6 +22,10 @@ const doEdit = (edit) =>{
   newItem.value ="";
 };
 
+// OPPCION BOTON 
+
+
+
 </script>
 
 <template>
@@ -49,7 +53,7 @@ const doEdit = (edit) =>{
     {{ newItemHighPriority ? "🔥" : "🧊" }}
   
      <!--BOTTON DE UI -->
-     <button  class="btn btn-primary" >Salvar Articulo </button>
+     <button class="btn btn-primary">Salvar Articulo </button>
     
 
      
