@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref , computed } from 'vue';
 // metodo para guardar nuevo articulo en la lista
 const saveItem = () => {
   items.value.push({id: items.value.length + 1, label: newItem.value})
@@ -28,6 +28,14 @@ const doEdit = (edit) =>{
   //  limpio el input del texto
   newItem.value ="";
 };
+
+// Propiedad computada
+const characterCount = computed(() => {
+  return newItem.value.length;
+});
+// Creando propiedad computada que invierte items de la lista
+const reversedItems = computed(() => [...items.value].reverse());
+
 </script>
 
 <template>
@@ -56,14 +64,20 @@ const doEdit = (edit) =>{
   
      <!--BOTTON DE UI -->
      <button :disabled="newItem.length == 0" class="btn btn-primary">Salvar Articulo </button>
+
+     	<!-- Contador -->
+  <p class="counter">
+    {{ characterCount }} / 200
+  </p>
     
   </form>
 
   <ul>
     <li
-     v-for="({ id, label, purchased, highPriority}, index) in items" v-bind:key="id"
+     v-for="({ id, label, purchased, highPriority}, index) in reversedItems" 
+     v-bind:key="id"
      :class="{strikeout : purchased, priority:highPriority}"
-     @click="togglePurchased(items[index])" 
+     @click="togglePurchased(reversedItems[index])" 
      >
       ⭐{{ label }}
     </li>
